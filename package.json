@@ -1,8 +1,13 @@
 {
   "name": "castle-controller",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +21,18 @@
   "bugs": {
     "url": "https://github.com/YanCastle/castle-controller/issues"
   },
-  "homepage": "https://github.com/YanCastle/castle-controller#readme"
+  "homepage": "https://github.com/YanCastle/castle-controller#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.119",
+    "@types/mime": "^2.0.0",
+    "@types/node": "^10.12.12"
+  },
+  "dependencies": {
+    "@types/mz": "^0.0.32",
+    "castle-model": "^1.0.2",
+    "castle-relation": "^1.0.1",
+    "lodash": "^4.17.11",
+    "mime": "^2.4.0",
+    "mz": "^2.7.0"
+  }
 }
