@@ -30,7 +30,6 @@ export default class BaseController {
         return this._ctx.config.getDbTablePK(this._ModelName)
     }
     public get _model(): any {
-        //TODO 判断当前类时候是一个Model类，如果不是这直接跑出异常
         if (this._ctx.config.getDbDefine(this._ModelName))
             return new Model(this._ctx, this._ModelName);
     }
@@ -38,10 +37,6 @@ export default class BaseController {
         this._ctx = ctx;
         this._config = ctx.config;
         this._ModelName = this.__proto__.constructor.name;
-        if (!this._checkPermission()) {
-            throw new Error('NO_PERMISSION')
-        }
-
     }
 
     protected async _checkPermission(): Promise<boolean> {
