@@ -74,14 +74,14 @@ export default class BaseController {
             this._ctx.cookies.set(name, value, options ? options : {})
         }
     }
-    protected _session(name: string, value?: any): any {
+    protected async _session(name: string, value?: any): Promise<any> {
         try {
             if ('undefined' == typeof value) {
-                return this._ctx.session.get(name)
+                return await this._ctx.session.get(name)
             } else if (name === null) {
-                this._ctx.session.destory()
+                await this._ctx.session.destory()
             } else {
-                this._ctx.session.set(name, value)
+                await this._ctx.session.set(name, value)
             }
         } catch (e) {
             return '';
