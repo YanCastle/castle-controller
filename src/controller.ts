@@ -1,7 +1,7 @@
 
 import BaseController from './base_controller';
-import Model from 'castle-model';
-import Relation from 'castle-relation';
+import Model, { M } from 'castle-model';
+import Relation, { R } from 'castle-relation';
 import { uniq, intersection, forOwn } from 'lodash';
 export default class Controller extends BaseController {
     async search(post: any) {
@@ -22,7 +22,7 @@ export default class Controller extends BaseController {
                     Where[v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
                 })
                 if (this._KeywordTable) {
-                    KeywordIDs = await (new Model(this._ctx, this._KeywordTable)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
+                    KeywordIDs = await (M(this._ctx, this._KeywordTable)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
                 }
             }
         }
@@ -30,7 +30,7 @@ export default class Controller extends BaseController {
 
         }
         let ModelName = this._WTable ? this._WTable : this._ModelName;
-        let CurrentModel = new Model(this._ctx, ModelName)
+        let CurrentModel = M(this._ctx, ModelName)
         WPKIDs = await CurrentModel.where(W).order(Sort).getFields(this._ctx.config.getDbTablePK(ModelName), true)
         if (Keyword) {
             //当且仅当Keyword不为空的时候才做查询结果合并
@@ -45,7 +45,7 @@ export default class Controller extends BaseController {
             PKIDs = [];
         }
         return {
-            L: PKIDs.length > 0 ? await (new Relation(this._ctx, ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
+            L: PKIDs.length > 0 ? await (R(this._ctx, ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
             T,
             P, N, R: {}
         }
