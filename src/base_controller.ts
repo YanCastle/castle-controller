@@ -2,8 +2,8 @@ import { createReadStream, Stats } from "fs";
 import * as fs from 'mz/fs'
 import { parse } from "path";
 import * as mime from 'mime';
-import Relation from 'castle-relation';
-import Model from 'castle-model';
+import Relation, { R } from 'castle-relation';
+import Model, { M } from 'castle-model';
 export default class BaseController {
     public _ctx: any;
     public _config: any
@@ -109,7 +109,7 @@ export default class BaseController {
         throw new Error('NO_UPLOAD_FILES')
     }
     protected M(TableName?: string): Model {
-        let modal = new Model(this._ctx, TableName ? TableName : this._ModelName);
+        let modal = M(this._ctx, TableName ? TableName : this._ModelName);
         if (this.trans) { modal.setTrans(this.trans) }
         return modal;
     }
@@ -134,10 +134,10 @@ export default class BaseController {
         return await this._ctx.config.rollback()
     }
     protected R(RelationName: string): Relation {
-        return new Relation(this._ctx, RelationName ? RelationName : this._ModelName)
+        return R(this._ctx, RelationName ? RelationName : this._ModelName)
     }
     protected I(name: string, options?: Object | any) {
-        let data = 'undefined' !== typeof this._ctx.req.body[name] ? this._ctx.req.body[name] : (options ? options.d : undefined);
+        let data = 'undefined' !== typeof this._ctx.request.body[name] ? this._ctx.request.body[name] : (options ? options.d : undefined);
         if (!options) { return data }
         if (options.type instanceof String) {
             if (options.type == typeof data) {
