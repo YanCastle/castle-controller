@@ -1,6 +1,6 @@
 {
   "name": "castle-controller",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@types/mz": "^0.0.32",
-    "castle-model": "^1.0.6",
-    "castle-relation": "^1.0.2",
+    "castle-model": "1.*",
+    "castle-relation": "1.*",
     "lodash": "^4.17.11",
     "mime": "^2.4.0",
     "mysql2": "^1.6.4",
