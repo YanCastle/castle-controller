@@ -46,10 +46,10 @@ castle-function@^1.0.1:
   dependencies:
     lodash "^4.17.11"
 
-castle-model@1.*:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/castle-model/-/castle-model-1.0.6.tgz#b67544e5c602db32584b4a5d0c3556e498458554"
-  integrity sha512-/VTrBJA+FJi94sGdrsPJIY9VtW2mplMcoauAAQKiQkQk0fbjYIyECa78YJx8wA3vCsHvgZ+mP716DLN0X2uMRQ==
+castle-model@1.0.*:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/castle-model/-/castle-model-1.0.10.tgz#eb983884cf46ff952a05c8f1dab9a81fe0879e63"
+  integrity sha512-LE+TO60SlorwIO/oHOolCX0A4hpB3UkAuZN7BpZQ959rA9xwxy8XlKP+cQ2fnusORSA97t91z5LB4oSyYmUVGQ==
   dependencies:
     lodash "^4.17.11"
     sequelize "^4.41.2"
@@ -62,10 +62,10 @@ castle-model@^1.0.1:
     lodash "^4.17.11"
     sequelize "^4.41.2"
 
-castle-relation@1.*:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/castle-relation/-/castle-relation-1.0.3.tgz#63ef10947afe961a344a47ecbecba6a8691ac102"
-  integrity sha512-KI/Fr5btLuDes3eoiO2PXMd/B5zh8TmelOaYoRoVuiXQsHa10+CYIPgWz5HZsDwsSoEbc3Fhxc4Iash9a2FeOg==
+castle-relation@1.0.*:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/castle-relation/-/castle-relation-1.0.4.tgz#e5a6ed7e71e89870ad5edeedc00bdbf09eab96b7"
+  integrity sha512-oUhahcF3UDgWh8NcypX8iZNbcI2Z32K4gg97sSZTyXqafYhOLkz6fGp7Z388601/TpxOB0s0rGwGblUngK7PlA==
   dependencies:
     castle-function "^1.0.1"
     castle-model "^1.0.1"

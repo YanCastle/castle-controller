@@ -76,10 +76,11 @@ export default class BaseController {
     }
     protected async _session(name: string, value?: any): Promise<any> {
         try {
-            if ('undefined' == typeof value) {
-                return await this._ctx.session.get(name)
-            } else if (name === null) {
+            if (name === null) {
                 await this._ctx.session.destory()
+            }
+            else if ('undefined' == typeof value) {
+                return await this._ctx.session.get(name)
             } else {
                 await this._ctx.session.set(name, value)
             }
