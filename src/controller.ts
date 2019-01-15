@@ -4,6 +4,10 @@ import Model, { M } from 'castle-model';
 import Relation, { R } from 'castle-relation';
 import { uniq, intersection, forOwn } from 'lodash';
 export default class Controller extends BaseController {
+    /**
+     * 查询请求
+     * @param post 
+     */
     async search(post: any) {
         let W = post.W || {},
             Keyword = post.Keyword || '',
@@ -96,12 +100,22 @@ export default class Controller extends BaseController {
                 }
             }))
     }
+    /**
+     * 条件更新
+     * @param post 
+     * @param ctx 
+     */
     async saveW(post: any, ctx: any) {
         let W = this.I('W', { type: 'object' });
         if (W)
             return await this._model.where(this.I('W', { type: 'object' })).save(this.I('Params', { type: 'object' }))
         return false;
     }
+    /**
+     * 条件删除
+     * @param post 
+     * @param ctx 
+     */
     async delW(post: any, ctx: any) {
         let W = this.I('W', { type: 'object' });
         if (W)
@@ -109,11 +123,21 @@ export default class Controller extends BaseController {
         else
             return false;
     }
+    /**
+     * 批量添加
+     * @param post 
+     * @param ctx 
+     */
     async adds(post: any, ctx: any) {
         if (post instanceof Array)
             return await this._model.addAll(post)
         return false;
     }
+    /**
+     * 批量替换
+     * @param post 
+     * @param ctx 
+     */
     async replaceW(post: any, ctx: any) {
         await this._model.where(this.I('W', { type: 'object', d: { [this._pk]: 0 } })).del()
         return await this._model.addAll(this.I('Data'))
