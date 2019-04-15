@@ -2,8 +2,8 @@ import { createReadStream, Stats } from "fs";
 import * as fs from 'mz/fs'
 import { parse } from "path";
 import * as mime from 'mime';
-import Relation, { R } from 'castle-relation';
-import Model, { M } from 'castle-model';
+import Relation, { R } from '@ctsy/relation';
+import Model, { M } from '@ctsy/model';
 export default class BaseController {
     public _ctx: any;
     public _config: any
