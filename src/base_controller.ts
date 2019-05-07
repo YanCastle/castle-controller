@@ -9,6 +9,7 @@ export default class BaseController {
     public _config: any
     public _ModelName: string = "";
     public __proto__: any;
+    public _prefix:string=""
     public get _KeywordFields(): Array<string> { return [] };
 
     public get _KeywordTable(): string { return '' };
@@ -110,7 +111,7 @@ export default class BaseController {
         throw new Error('NO_UPLOAD_FILES')
     }
     protected M(TableName?: string): Model {
-        let modal = M(this._ctx, TableName ? TableName : this._ModelName);
+        let modal = M(this._ctx, TableName ? TableName : this._ModelName,this._prefix);
         if (this.trans) { modal.setTrans(this.trans) }
         return modal;
     }
