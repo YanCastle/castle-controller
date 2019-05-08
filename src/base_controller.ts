@@ -136,7 +136,7 @@ export default class BaseController {
         return await this._ctx.config.rollback()
     }
     protected async R(RelationName: string): Promise<Relation> {
-        return await R(this._ctx, RelationName ? RelationName : this._ModelName)
+        return await R(this._ctx, RelationName ? RelationName : this._ModelName,this._prefix)
     }
     protected I(name: string, options?: Object | any) {
         let data = 'undefined' !== typeof this._ctx.request.body[name] ? this._ctx.request.body[name] : (options ? options.d : undefined);
