@@ -10,19 +10,19 @@
     lodash "^4.17.11"
     sequelize "^4.41.2"
 
-"@ctsy/relation@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-1.0.6.tgz#ae23668c7aa0e88c8dca1b0178b5676e1f0073b0"
-  integrity sha512-OH8tdamIhEs3vS3HiwzxVVukovUX/O30sWjUJXwN3TQyS45UOYITeMA6nLnTLd4bZdubBnPg7l7+gE7Oyanaqg==
+"@ctsy/relation@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-1.0.8.tgz#10e725ed2c465996c7d14ec83e2cd88b5e1e77b5"
+  integrity sha512-Cnm8A9ehtNgOr7BYxnpMSthskmVNF2X9MhY3ZrcPunoXJOCKGZf+dvrhGaoLHhiEYVFPncnIYhV1RsTQSam3RA==
   dependencies:
     "@ctsy/model" "^1.0.16"
     castle-function "^1.0.1"
     lodash "^4.17.11"
 
 "@types/bluebird@*":
-  version "3.5.26"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.26.tgz#a38c438ae84fa02431d6892edf86e46edcbca291"
-  integrity sha512-aj2mrBLn5ky0GmAg6IPXrQjnN0iB/ulozuJ+oZdrHRAzRbXjGmu4UXsNCjFvPbSaaPZmniocdOzsM392qLOlmQ==
+  version "3.5.27"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
+  integrity sha512-6BmYWSBea18+tSjjSC3QIyV93ZKAeNWGM7R6aYt1ryTZXrlHF+QLV0G2yV0viEGVyRkyQsWfMoJ0k/YghBX5sQ==
 
 "@types/continuation-local-storage@*":
   version "3.2.1"
@@ -37,9 +37,9 @@
   integrity sha512-Xqg/lIZMrUd0VRmSRbCAewtwGZiAk3mEUDvV4op1tGl+LvyPcb/MIOSxTl9z+9+J+R4/vpjiCAT4xeKzH9ji1w==
 
 "@types/lodash@*", "@types/lodash@^4.14.119":
-  version "4.14.123"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.123.tgz#39be5d211478c8dd3bdae98ee75bb7efe4abfe4d"
-  integrity sha512-pQvPkc4Nltyx7G1Ww45OjVqUsJP4UsZm+GWJpigXgkikZqJgRm4c48g027o6tdgubWHwFRF15iFd+Y4Pmqv6+Q==
+  version "4.14.132"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.132.tgz#8ce45ca8745ff2e004fac0de0ab46f61e390ffa0"
+  integrity sha512-RNUU1rrh85NgUJcjOOr96YXr+RHwInGbaQCZmlitqOaCKXffj8bh+Zxwuq5rjDy5OgzFldDVoqk4pyLEDiwxIw==
 
 "@types/mime@^2.0.0":
   version "2.0.1"
@@ -54,19 +54,19 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "11.13.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.4.tgz#f83ec3c3e05b174b7241fadeb6688267fe5b22ca"
-  integrity sha512-+rabAZZ3Yn7tF/XPGHupKIL5EcAbrLxnTr/hgQICxbeuAfWtT0UZSfULE+ndusckBItcv4o6ZeOJplQikVcLvQ==
+  version "12.0.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.3.tgz#5d8d24e0033fc6393efadc85cb59c1f638095c9a"
+  integrity sha512-zkOxCS/fA+3SsdA+9Yun0iANxzhQRiNwTvJSr6N95JhuJ/x27z9G2URx1Jpt3zYFfCGUXZGL5UDxt5eyLE7wgw==
 
 "@types/node@^10.12.12":
-  version "10.14.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.4.tgz#1c586b991457cbb58fef51bc4e0cfcfa347714b5"
-  integrity sha512-DT25xX/YgyPKiHFOpNuANIQIVvYEwCWXgK2jYYwqgaMrYE6+tq+DtmMwlD3drl6DJbUwtlIDnn0d7tIn/EbXBg==
+  version "10.14.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.7.tgz#1854f0a9aa8d2cd6818d607b3d091346c6730362"
+  integrity sha512-on4MmIDgHXiuJDELPk1NFaKVUxxCFr37tm8E9yN6rAiF5Pzp/9bBfBHkoexqRiY+hk/Z04EJU9kKEb59YqJ82A==
 
 "@types/sequelize@^4.27.47":
-  version "4.27.47"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.47.tgz#32d469eca5a101fa98af090b16d384692d0d596e"
-  integrity sha512-gbvb0R0Ndf6unWkheqEqsn8cj/gy1NqjIO5pEkB/Ov9VEYw2T/owhNoL4hOVCMgHNL+YQCnSzRcaWj4izFC0Mw==
+  version "4.28.2"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.28.2.tgz#9e8d9a51c25a7bae0e003f692bacb081448372a7"
+  integrity sha512-cESUjkDd7yHeLPiJlHY8quhXWmMQRj6kbGBBuPej4nXHd5SuiuVXd53DdP5AcHJAHzk5rRN7yAx+b97rzLNvNg==
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
@@ -84,9 +84,9 @@ any-promise@^1.0.0:
   integrity sha1-q8av7tzqUugJzcA3au0845Y10X8=
 
 bluebird@^3.4.6, bluebird@^3.5.0:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
-  integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
+  integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
 castle-function@^1.0.1:
   version "1.0.2"
@@ -148,9 +148,9 @@ lodash@^4.17.1, lodash@^4.17.11:
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 mime@^2.4.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.2.tgz#ce5229a5e99ffc313abac806b482c10e7ba6ac78"
-  integrity sha512-zJBfZDkwRu+j3Pdd2aHsR5GfH2jIWhmL1ZzBoc+X+3JEti2hbArWcyJ+1laC1D2/U/W1a/+Cegj0/OnEU2ybjg==
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.3.tgz#229687331e86f68924e6cb59e1cdd937f18275fe"
+  integrity sha512-QgrPRJfE+riq5TPZMcHZOtm8c6K/yYrMbKIoRfapfiGLxS8OTeIfRhUGW5LU7MlRa52KOAGCfUNruqLrIBvWZw==
 
 moment-timezone@^0.5.14:
   version "0.5.25"
