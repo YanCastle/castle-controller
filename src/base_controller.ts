@@ -9,7 +9,7 @@ export default class BaseController {
     public _config: any
     public _ModelName: string = "";
     public __proto__: any;
-    public _prefix:string=""
+    public _prefix: string = ""
     public get _KeywordFields(): Array<string> { return [] };
 
     public get _KeywordTable(): string { return '' };
@@ -111,7 +111,7 @@ export default class BaseController {
         throw new Error('NO_UPLOAD_FILES')
     }
     protected M(TableName?: string): Model {
-        let modal = M(this._ctx, TableName ? TableName : this._ModelName,this._prefix);
+        let modal = M(this._ctx, TableName ? TableName : this._ModelName, this._prefix);
         if (this.trans) { modal.setTrans(this.trans) }
         return modal;
     }
@@ -135,8 +135,12 @@ export default class BaseController {
     protected async rollback() {
         return await this._ctx.config.rollback()
     }
-    protected async R(RelationName: string): Promise<Relation> {
-        return await R(this._ctx, RelationName ? RelationName : this._ModelName,this._prefix)
+    /**
+     * 实例化关系对象
+     * @param RelationName 
+     */
+    protected R(RelationName: string): Relation {
+        return R(this._ctx, RelationName ? RelationName : this._ModelName, this._prefix)
     }
     protected I(name: string, options?: Object | any) {
         let data = 'undefined' !== typeof this._ctx.request.body[name] ? this._ctx.request.body[name] : (options ? options.d : undefined);
