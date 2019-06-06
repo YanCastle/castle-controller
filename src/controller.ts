@@ -26,7 +26,7 @@ export default class Controller extends BaseController {
                     Where[v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
                 })
                 if (this._KeywordTable) {
-                    KeywordIDs = await (M(this._ctx, this._KeywordTable)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
+                    KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
                 }
             }
         }
@@ -34,7 +34,7 @@ export default class Controller extends BaseController {
 
         }
         let ModelName = this._WTable ? this._WTable : this._ModelName;
-        let CurrentModel = M(this._ctx, ModelName)
+        let CurrentModel = M(this._ctx, ModelName, this._prefix)
         WPKIDs = await CurrentModel.where(W).order(Sort).getFields(this._ctx.config.getDbTablePK(ModelName), true)
         if (Keyword) {
             //当且仅当Keyword不为空的时候才做查询结果合并
@@ -49,7 +49,7 @@ export default class Controller extends BaseController {
             PKIDs = [];
         }
         return {
-            L: PKIDs.length > 0 ? await (R(this._ctx, ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
+            L: PKIDs.length > 0 ? await (R(this._ctx, ModelName, this._prefix)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
             T,
             P, N, R: {}
         }
