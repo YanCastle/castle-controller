@@ -49,7 +49,7 @@ export default class Controller extends BaseController {
             PKIDs = [];
         }
         return {
-            L: PKIDs.length > 0 ? await (R(this._ctx, ModelName, this._prefix)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
+            L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
             T,
             P, N, R: {}
         }
