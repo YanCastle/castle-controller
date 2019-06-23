@@ -32,7 +32,7 @@ export default class BaseController {
     }
     public get _model(): any {
         if (this._ctx.config.getDbDefine(this._ModelName))
-            return new Model(this._ctx, this._ModelName);
+            return new Model(this._ctx, this._ModelName, this._prefix);
     }
     constructor(ctx: any) {
         this._ctx = ctx;
