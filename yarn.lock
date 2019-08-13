@@ -10,7 +10,15 @@
     lodash "^4.17.11"
     sequelize "4.43.0"
 
-"@ctsy/relation@^1.0.10":
+"@ctsy/model@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-1.0.19.tgz#a5bccc1edc810164950cad8db0d4451cbab63b2e"
+  integrity sha512-USmEbc2N4JU4uR1mnpsiwhDwSNh1Z8zeKDxEgHKlJjw24nfZhssoLjXJs4v/upIFKb7Py9Ovf7lp6GaU5/hTYw==
+  dependencies:
+    lodash "~4.17.11"
+    sequelize "4.43.0"
+
+"@ctsy/relation@~1.0.10":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-1.0.10.tgz#5fed3394873f4a9fb72cd6e1d6b1f2d38e1386c2"
   integrity sha512-+URws0C50zvvOd5u+cKj/RCzUXN1KvKOqZJSQoDIYA5jNnpDrDcN/ZoPyKzJhofPNyVAtHrnyhMck+M2m+BfRg==
@@ -147,6 +155,11 @@ lodash@^4.17.1, lodash@^4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+
+lodash@~4.17.11:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 mime@^2.4.0:
   version "2.4.3"
