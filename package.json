@@ -1,6 +1,6 @@
 {
   "name": "@ctsy/controller",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,11 +33,11 @@
     "@types/sequelize": "^4.28.3"
   },
   "dependencies": {
-    "@ctsy/model": "^1.0.19",
-    "@ctsy/relation": "^1.0.10",
-    "lodash": "^4.17.11",
+    "@ctsy/model": "^1.0",
+    "@ctsy/relation": "^1.0",
+    "lodash": "^4.17",
     "mime": "^2.4.0",
     "mz": "^2.7.0",
-    "sequelize": "^4.43.0"
+    "sequelize": "^4"
   }
 }
