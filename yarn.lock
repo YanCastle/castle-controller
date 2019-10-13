@@ -2,31 +2,31 @@
 # yarn lockfile v1
 
 
-"@ctsy/model@^1.0.18":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-1.0.18.tgz#6c59ba157758e6e21bd1d7428de691519c4bdb82"
-  integrity sha512-A3Dvrf75XHJFM4G5j4qYF7qdOefYLK38DwBGq3msXZZfm846UuPof3Xo21Pxa/8yKodr7auAIkS96w9mSBXFOA==
+"@ctsy/model@^1.0.*":
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-1.0.22.tgz#6945fc0bc3a37ec7cc77073eccedba5fab2cb4d1"
+  integrity sha512-oo+OYvukAKnQOVjRTIQPBEFlT+img4u6tJ0LKh9s74kSqwnRUqAagVSHsq1cXPGoLpliSroG0LreGYAnBq+JNA==
   dependencies:
     lodash "^4.17.11"
-    sequelize "4.43.0"
+    sequelize "^4.43.0"
 
-"@ctsy/model@^1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-1.0.19.tgz#a5bccc1edc810164950cad8db0d4451cbab63b2e"
-  integrity sha512-USmEbc2N4JU4uR1mnpsiwhDwSNh1Z8zeKDxEgHKlJjw24nfZhssoLjXJs4v/upIFKb7Py9Ovf7lp6GaU5/hTYw==
+"@ctsy/model@~1.0.21":
+  version "1.0.21"
+  resolved "https://registry.npm.taobao.org/@ctsy/model/download/@ctsy/model-1.0.21.tgz#44fce3d672e7d3b2dacc26e22a095fd31518aedd"
+  integrity sha1-RPzj1nLn07LazCbiKglf0xUYrt0=
   dependencies:
-    lodash "~4.17.11"
-    sequelize "4.43.0"
-
-"@ctsy/relation@~1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-1.0.10.tgz#5fed3394873f4a9fb72cd6e1d6b1f2d38e1386c2"
-  integrity sha512-+URws0C50zvvOd5u+cKj/RCzUXN1KvKOqZJSQoDIYA5jNnpDrDcN/ZoPyKzJhofPNyVAtHrnyhMck+M2m+BfRg==
-  dependencies:
-    "@ctsy/model" "^1.0.18"
-    castle-function "^1.0.1"
     lodash "^4.17.11"
-    sequelize "4.43.0"
+    sequelize "^4.43.0"
+
+"@ctsy/relation@^1.0.*":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-1.0.12.tgz#b98556bf46ac2ff7ef090001afa1d3113b0d583a"
+  integrity sha512-5McX6E8qnbsIbjrE9pe4a0LrnvHkBcWnojnhfXOkgUdqJTmUE7qXsdr7huwZe87Y2EBDCzWc1CfDI0F/dd2UzQ==
+  dependencies:
+    "@ctsy/model" "~1.0.21"
+    castle-function "~1.0.1"
+    lodash "^4.17.11"
+    sequelize "^4.43.0"
 
 "@types/bluebird@*":
   version "3.5.27"
@@ -45,17 +45,17 @@
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.6.tgz#3e02972728c69248c2af08d60a48cbb8680fffdf"
   integrity sha512-Xqg/lIZMrUd0VRmSRbCAewtwGZiAk3mEUDvV4op1tGl+LvyPcb/MIOSxTl9z+9+J+R4/vpjiCAT4xeKzH9ji1w==
 
-"@types/lodash@*", "@types/lodash@^4.14.119":
+"@types/lodash@*":
   version "4.14.132"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.132.tgz#8ce45ca8745ff2e004fac0de0ab46f61e390ffa0"
   integrity sha512-RNUU1rrh85NgUJcjOOr96YXr+RHwInGbaQCZmlitqOaCKXffj8bh+Zxwuq5rjDy5OgzFldDVoqk4pyLEDiwxIw==
 
-"@types/mime@^2.0.0":
+"@types/mime@*":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
-"@types/mz@^0.0.32":
+"@types/mz@*":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/mz/-/mz-0.0.32.tgz#e8248b4e41424c052edc1725dd33650c313a3659"
   integrity sha512-cy3yebKhrHuOcrJGkfwNHhpTXQLgmXSv1BX+4p32j+VUQ6aP2eJ5cL7OvGcAQx75fCTFaAIIAKewvqL+iwSd4g==
@@ -67,15 +67,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.3.tgz#5d8d24e0033fc6393efadc85cb59c1f638095c9a"
   integrity sha512-zkOxCS/fA+3SsdA+9Yun0iANxzhQRiNwTvJSr6N95JhuJ/x27z9G2URx1Jpt3zYFfCGUXZGL5UDxt5eyLE7wgw==
 
-"@types/node@^10.12.12":
-  version "10.14.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.7.tgz#1854f0a9aa8d2cd6818d607b3d091346c6730362"
-  integrity sha512-on4MmIDgHXiuJDELPk1NFaKVUxxCFr37tm8E9yN6rAiF5Pzp/9bBfBHkoexqRiY+hk/Z04EJU9kKEb59YqJ82A==
-
-"@types/sequelize@^4.28.3":
-  version "4.28.3"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.28.3.tgz#c393bf3cbfea2e18786ce43267e5921d91e27d4e"
-  integrity sha512-Z+gbWsLmGnqnAz91I8Wtfbe+4D1aUyQ4aawYfohpvar4Azr8aSNwzS1rFQYO2dk6zcClt5k9n0qCek/YAq4WNw==
+"@types/sequelize@^4.*":
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.28.5.tgz#25dcb3afd1518a52ab611d706c7be93a6ee28902"
+  integrity sha512-1n2GJuTnUPzXzO4pv/m531y1lYkWjxgtv+FGIa3DDF30XZMPzXBWfDt/XpXaR64OQ/6CWwf5ZMwJ2CucO0VFvw==
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
@@ -97,12 +92,12 @@ bluebird@^3.4.6, bluebird@^3.5.0:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
   integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
-castle-function@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/castle-function/-/castle-function-1.0.2.tgz#2c906d3baf28edd3004b18f9b76b4ebb368613ca"
-  integrity sha512-zN5o9mpEoKIC7w6xzPxjSkRDb7rs25vRelRcdIJU45tGX7luv8GLx8w50CKn+nakCaOQMtQaFIVZbqV7k4ndGw==
+castle-function@~1.0.1:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/castle-function/download/castle-function-1.0.3.tgz#8558863c0dbc87d5cae6fdf726b46c5c581acf36"
+  integrity sha1-hViGPA28h9XK5v33JrRsXFgazzY=
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.15"
 
 cls-bluebird@^2.1.0:
   version "2.1.0"
@@ -151,20 +146,20 @@ is-bluebird@^1.0.2:
   resolved "https://registry.yarnpkg.com/is-bluebird/-/is-bluebird-1.0.2.tgz#096439060f4aa411abee19143a84d6a55346d6e2"
   integrity sha1-CWQ5Bg9KpBGr7hkUOoTWpVNG1uI=
 
+lodash@*, lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
+
 lodash@^4.17.1, lodash@^4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
-lodash@~4.17.11:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-mime@^2.4.0:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.3.tgz#229687331e86f68924e6cb59e1cdd937f18275fe"
-  integrity sha512-QgrPRJfE+riq5TPZMcHZOtm8c6K/yYrMbKIoRfapfiGLxS8OTeIfRhUGW5LU7MlRa52KOAGCfUNruqLrIBvWZw==
+mime@*:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.4.tgz#bd7b91135fc6b01cde3e9bae33d659b63d8857e5"
+  integrity sha512-LRxmNwziLPT828z+4YkNzloCFC2YM4wrB99k+AV5ZbEyfGNWfG8SO1FUXLmLDBSo89NrJZ4DIWeLjy1CHGhMGA==
 
 moment-timezone@^0.5.14:
   version "0.5.25"
@@ -188,7 +183,7 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-mz@^2.7.0:
+mz@*:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
   integrity sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==
@@ -215,10 +210,10 @@ semver@^5.5.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
   integrity sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
 
-sequelize@4.43.0:
-  version "4.43.0"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-4.43.0.tgz#41c36c7684b0ea23ca7be1c3af3d65f2309a4ca6"
-  integrity sha512-GkwGFVREKBf/ql6W6RXwXy1fzb/HOk0lmOBbcQrJMvJtB65Jfg7CUh+sENh0deuWk5s79JedgZJ/yEjvtzHXaQ==
+sequelize@^4.*, sequelize@^4.43.0:
+  version "4.44.3"
+  resolved "https://registry.npm.taobao.org/sequelize/download/sequelize-4.44.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsequelize%2Fdownload%2Fsequelize-4.44.3.tgz#29d7af9efdfad4c796a75764e91f701fc454cee0"
+  integrity sha1-Kdevnv361MeWp1dk6R9wH8RUzuA=
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"

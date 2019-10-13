@@ -1,6 +1,6 @@
 {
   "name": "@ctsy/controller",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,18 +26,18 @@
   },
   "homepage": "https://github.com/YanCastle/castle-controller#readme",
   "devDependencies": {
-    "@types/lodash": "^4.14.119",
-    "@types/mime": "^2.0.0",
-    "@types/mz": "^0.0.32",
-    "@types/node": "^10.12.12",
-    "@types/sequelize": "^4.28.3"
+    "@types/lodash": "*",
+    "@types/mime": "*",
+    "@types/mz": "*",
+    "@types/node": "*",
+    "@types/sequelize": "^4.*"
   },
   "dependencies": {
-    "@ctsy/model": "^1.0",
-    "@ctsy/relation": "^1.0",
-    "lodash": "^4.17",
-    "mime": "^2.4.0",
-    "mz": "^2.7.0",
-    "sequelize": "^4"
+    "@ctsy/model": "^1.0.*",
+    "@ctsy/relation": "^1.0.*",
+    "lodash": "*",
+    "mime": "*",
+    "mz": "*",
+    "sequelize": "^4.*"
   }
 }
