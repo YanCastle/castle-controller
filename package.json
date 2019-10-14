@@ -33,7 +33,7 @@
     "@types/sequelize": "^4.*"
   },
   "dependencies": {
-    "@ctsy/model": "^1.0.24",
+    "@ctsy/model": "^1.0.25",
     "@ctsy/relation": "^1.0",
     "lodash": "*",
     "mime": "*",
