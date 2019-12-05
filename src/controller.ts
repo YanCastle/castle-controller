@@ -3,39 +3,80 @@ import BaseController from './base_controller';
 import Model, { M } from '@ctsy/model';
 import Relation, { R } from '@ctsy/relation';
 import { uniq, intersection, forOwn } from 'lodash';
+import { array_columns } from 'castle-function';
 export default class Controller extends BaseController {
+
     /**
      * 查询请求
      * @param post 
      */
     async search(post: any) {
+        let ModelName = this._WTable ? this._WTable : this._ModelName;
         let W = post.W || {},
             Keyword = post.Keyword || '',
-            KeywordFields = post.KF || '',
+            KeywordFields = post.KF || [],
             P = post.P || 1,
             N = post.N || 10,
             Sort = post.Sort || '',
             WPKIDs: any[] = [],
             PKIDs: any[] = [],
-            KeywordIDs: any[] = []
-        if (Keyword.length > 0) {
-            let Where: any = {};
-            let Fields: string[] = uniq([...KeywordFields, ...this._KeywordFields])
-            if (Fields) {
-                Fields.forEach((v: string) => {
-                    Where[v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
-                })
-                if (this._KeywordTable) {
-                    KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
+            KeywordIDs: any[] = [],
+            TableFields: { [index: string]: any } = await this._ctx.config.getDbTableFields(ModelName),
+            PK = this._ctx.config.getDbTablePK(ModelName),
+            Where: { [index: string]: { like: string } } = {};
+        if (Sort) {
+            if ('string' == typeof Sort) {
+                for (let x of Sort.split(',')) {
+                    let key = x.split(' ');
+                    if (!TableFields[key[0]]) {
+                        throw new Error(`Sort Field:${key[0]} Is Not Avaliable`);
+                    }
+                    if (key[1] && !['asc', 'desc'].includes(key[1].toLowerCase())) {
+                        throw new Error(`Sort Field:${key[0]} Sort Type ${key[1]} Is Not Avaliable`)
+                    }
                 }
             }
         }
-        if (Object.keys(W).length > 0) {
-
+        if (Keyword.length > 0) {
+            // let Where: any = {};
+            let Fields: string[] = KeywordFields ? intersection([...KeywordFields, ...this._KeywordFields]) : this._KeywordFields
+            if (Fields && this._KeywordTable) {
+                Fields.forEach((v: string) => {
+                    Where[v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
+                })
+                // if (this._KeywordTable) {
+                //     KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
+                // }
+            }
         }
-        let ModelName = this._WTable ? this._WTable : this._ModelName;
-        let CurrentModel = M(this._ctx, ModelName, this._prefix)
-        WPKIDs = await CurrentModel.where(W).order(Sort).getFields(this._ctx.config.getDbTablePK(ModelName), true)
+        let CurrentModel = M(this._ctx, ModelName, this._prefix);
+        if (Keyword.length == 0 || this._ModelName.toLowerCase() == this._KeywordTable.toLowerCase()) {
+            let whereStr: string = await CurrentModel.sql(true).where(Object.assign(W, Where)).fields(PK).select();
+            let sql: string[] = [`SELECT ${PK} FROM ${CurrentModel.true_table_name}`];
+            if (whereStr.length > 0) {
+                sql.push(`WHERE ${whereStr}`)
+            }
+            let countSQL = sql.join(' ').replace(` ${PK} `, ` COUNT(${PK}) AS A `);
+            if (Sort) {
+                sql.push(`ORDER BY ${Sort}`)
+            }
+            sql.push(`LIMIT ${(P - 1) * N},${P * N}`);
+            let rsql = sql.join(' ');
+            let [PKIDs, Count] = await Promise.all([
+                CurrentModel.query(rsql),
+                CurrentModel.query(countSQL)
+            ]);
+            return {
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(array_columns(PKIDs, PK)) : [],
+                T: Count[0].A,
+                P, N, R: {}
+            }
+        } else {
+            if (this._KeywordTable) {
+                KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(PK, true)
+            }
+        }
+        WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)
         if (Keyword) {
             //当且仅当Keyword不为空的时候才做查询结果合并
             PKIDs = intersection(WPKIDs, KeywordIDs)
