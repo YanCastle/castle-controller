@@ -1,7 +1,6 @@
 
 import BaseController from './base_controller';
 import Model, { M } from '@ctsy/model';
-import Relation, { R } from '@ctsy/relation';
 import { uniq, intersection, forOwn } from 'lodash';
 import { array_columns } from 'castle-function';
 export default class Controller extends BaseController {
