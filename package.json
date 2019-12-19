@@ -1,6 +1,6 @@
 {
   "name": "@ctsy/controller",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,6 +33,6 @@
   "dependencies": {
     "@ctsy/config": "^2.0.0",
     "@ctsy/model": "^2.0.0",
-    "@ctsy/relation": "^2.0.1"
+    "@ctsy/relation": "^2.0.2"
   }
 }
