@@ -10,6 +10,10 @@ export default class BaseController {
     public _ModelName: string = "";
     public __proto__: any;
     public _prefix: string = ""
+    /**
+     * 应用编号，saas模式下可用
+     */
+    public appid: string = "";
     public get _KeywordFields(): Array<string> { return [] };
 
     public get _KeywordTable(): string { return '' };
@@ -78,9 +82,12 @@ export default class BaseController {
     protected async _session(name: string, value?: any): Promise<any> {
         try {
             if (name === null) {
-                await this._ctx.session.destory()
+                return await this._ctx.session.destory()
             }
-            else if ('undefined' == typeof value) {
+            if (this.appid) {
+                name = this.appid + '/' + name
+            }
+            if ('undefined' == typeof value) {
                 return await this._ctx.session.get(name)
             } else {
                 await this._ctx.session.set(name, value)

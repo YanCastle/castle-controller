@@ -44,10 +44,10 @@
     mysql2 "^2.0.1"
     sequelize "^5.21.2"
 
-"@ctsy/relation@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.1.tgz#225718e5d19637a285d8c85a1dd51f729d4da1b5"
-  integrity sha512-h4vxjpsn5Hs3F564ydYgSaOyKrB97nN9zfredAYNj4oVfw5AQzfC1JteZPwugFg4UGnIbyzgBNosSB8vIxR8GQ==
+"@ctsy/relation@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.2.tgz#0a7c1c4287c44cc68b39b55f0819a787f05398fd"
+  integrity sha512-k6C7tSl7iaFatdy8sc4Svd4JWzWqhiD22gvOq1dTy1gOzuelfVsTnu6ynfM0Fo0468DmQBM1sUXhMvXowK+xmg==
   dependencies:
     "@ctsy/model" "^2.0.0"
     castle-function "^1.0"
