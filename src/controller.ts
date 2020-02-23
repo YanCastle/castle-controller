@@ -4,6 +4,7 @@ import Model, { M } from '@ctsy/model';
 import { uniq, intersection, forOwn } from 'lodash';
 import { array_columns } from 'castle-function';
 import { DbOp } from '@ctsy/model/dist/index';
+import { R } from '@ctsy/relation';
 export default class Controller extends BaseController {
 
     /**
@@ -74,7 +75,7 @@ export default class Controller extends BaseController {
             }
         } else {
             if (this._KeywordTable) {
-                KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(PK, true)
+                KeywordIDs = await (R(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(PK, true)
             }
         }
         WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)
