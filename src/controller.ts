@@ -44,7 +44,7 @@ export default class Controller extends BaseController {
             let Fields: string[] = KeywordFields ? intersection([...KeywordFields, ...this._KeywordFields]) : this._KeywordFields
             if (Fields && this._KeywordTable) {
                 Fields.forEach((v: string) => {
-                    Where[DbOp.or][v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
+                    Where[DbOp.or][v] = { [DbOp.like]: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
                 })
                 // if (this._KeywordTable) {
                 //     KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
