@@ -75,7 +75,7 @@ export default class Controller extends BaseController {
             }
         } else {
             if (this._KeywordTable) {
-                KeywordIDs = await (R(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(PK, true)
+                KeywordIDs = (await this.R(this._KeywordTable).where({ or: Where }).fields(PK).select()).map((v: any) => { return v[PK] })
             }
         }
         WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)
