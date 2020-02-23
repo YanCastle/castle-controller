@@ -3,6 +3,7 @@ import BaseController from './base_controller';
 import Model, { M } from '@ctsy/model';
 import { uniq, intersection, forOwn } from 'lodash';
 import { array_columns } from 'castle-function';
+import { DbOp } from '@ctsy/model/dist/index';
 export default class Controller extends BaseController {
 
     /**
@@ -11,7 +12,7 @@ export default class Controller extends BaseController {
      */
     async search(post: any) {
         let ModelName = this._WTable ? this._WTable : this._ModelName;
-        let W = post.W || {},
+        let W: any = post.W || {},
             Keyword = post.Keyword || '',
             KeywordFields = post.KF || [],
             P = post.P || 1,
@@ -22,7 +23,7 @@ export default class Controller extends BaseController {
             KeywordIDs: any[] = [],
             TableFields: { [index: string]: any } = await this._ctx.config.getDbTableFields(ModelName),
             PK = this._ctx.config.getDbTablePK(ModelName),
-            Where: { [index: string]: { like: string } } = {};
+            Where: any = {};
         if (Sort) {
             if ('string' == typeof Sort) {
                 for (let x of Sort.split(',')) {
@@ -38,10 +39,11 @@ export default class Controller extends BaseController {
         }
         if (Keyword.length > 0) {
             // let Where: any = {};
+            Where[DbOp.or] = {}
             let Fields: string[] = KeywordFields ? intersection([...KeywordFields, ...this._KeywordFields]) : this._KeywordFields
             if (Fields && this._KeywordTable) {
                 Fields.forEach((v: string) => {
-                    Where[v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
+                    Where[DbOp.or][v] = { like: `%${Keyword.replace(/[ ;%\r\n]/g, '')}%` }
                 })
                 // if (this._KeywordTable) {
                 //     KeywordIDs = await (M(this._ctx, this._KeywordTable, this._prefix)).where({ or: Where }).getFields(this._ctx.config.getDbTablePK(this._ModelName), true)
