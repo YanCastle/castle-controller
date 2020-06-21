@@ -143,3 +143,6 @@ export default class Controller extends BaseController {
 }
 
 ```
+
+# 开始支持ejs渲染，
+## 在模块或根路径下创建view目录，

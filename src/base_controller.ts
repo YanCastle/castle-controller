@@ -10,6 +10,8 @@ export default class BaseController {
     public _ModelName: string = "";
     public __proto__: any;
     public _prefix: string = ""
+
+    public _render: boolean | string = false;
     /**
      * 应用编号，saas模式下可用
      */
@@ -84,8 +86,8 @@ export default class BaseController {
             if (name === null) {
                 return await this._ctx.session.destory()
             }
-            if (this.appid) {
-                name = this.appid + '/' + name
+            if (this.appid || this._ctx.auth?.appid) {
+                name = this.appid || this._ctx.auth?.appid + '/' + name
             }
             if ('undefined' == typeof value) {
                 return await this._ctx.session.get(name)
@@ -165,6 +167,18 @@ export default class BaseController {
         }
         else {
             return data;
+        }
+    }
+    async render(file: string = "", data: Object) {
+        let ejs = require('ejs');
+        if (ejs) {
+            try {
+
+            } catch (error) {
+
+            }
+        } else {
+            console.error('缺少ejs库，请使用 yarn add ejs 安装')
         }
     }
 }

@@ -1,10 +1,8 @@
 
 import BaseController from './base_controller';
-import Model, { M } from '@ctsy/model';
 import { uniq, intersection, forOwn } from 'lodash';
 import { array_columns } from 'castle-function';
-import { DbOp } from '@ctsy/model/dist/index';
-import { R } from '@ctsy/relation';
+import { DbOp, M } from '@ctsy/model';
 export default class Controller extends BaseController {
 
     /**
@@ -16,8 +14,8 @@ export default class Controller extends BaseController {
         let W: any = post.W || {},
             Keyword = post.Keyword || '',
             KeywordFields = post.KF || [],
-            P = post.P || 1,
-            N = post.N || 10,
+            P = parseInt(post.P || 1),
+            N = parseInt(post.N || 10),
             Sort = post.Sort || '',
             WPKIDs: any[] = [],
             PKIDs: any[] = [],
@@ -53,7 +51,7 @@ export default class Controller extends BaseController {
         }
         let CurrentModel = M(this._ctx, ModelName, this._prefix);
         if (Keyword.length == 0 || this._ModelName.toLowerCase() == this._KeywordTable.toLowerCase()) {
-            let whereStr: string = await CurrentModel.sql(true).where(Object.assign(W, Where)).fields(PK).select();
+            let whereStr: any = await CurrentModel.sql(true).where(Object.assign(W, Where)).fields(PK).select();
             let sql: string[] = [`SELECT ${PK} FROM ${CurrentModel.true_table_name}`];
             if (whereStr.length > 0) {
                 sql.push(`WHERE ${whereStr}`)
@@ -62,14 +60,14 @@ export default class Controller extends BaseController {
             if (Sort) {
                 sql.push(`ORDER BY ${Sort}`)
             }
-            sql.push(`LIMIT ${(P - 1) * N},${P * N}`);
+            sql.push(`LIMIT ${(P - 1) * N},${N}`);
             let rsql = sql.join(' ');
             let [PKIDs, Count] = await Promise.all([
                 CurrentModel.query(rsql),
                 CurrentModel.query(countSQL)
             ]);
             return {
-                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(array_columns(PKIDs, PK)) : [],
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(<any>array_columns(PKIDs, PK)) : [],
                 T: Count[0].A,
                 P, N, R: {}
             }
