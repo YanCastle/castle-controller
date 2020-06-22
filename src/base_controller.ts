@@ -81,13 +81,21 @@ export default class BaseController {
             this._ctx.cookies.set(name, value, options ? options : {})
         }
     }
+    /**
+     * session读写操作
+     * @param {string} name session名称
+     * @param {any|undefined} value 若值不为空则为设置，若值为undefined表示取值，若为null表示清空
+     */
     protected async _session(name: string, value?: any): Promise<any> {
         try {
             if (name === null) {
                 return await this._ctx.session.destory()
             }
-            if (this.appid || this._ctx.auth?.appid) {
-                name = this.appid || this._ctx.auth?.appid + '/' + name
+            if (this.appid) {
+                name = this.appid + '/' + name
+            }
+            if (this._ctx.auth) {
+                name = (this._ctx.auth.appid || 'unknow') + '/' + name
             }
             if ('undefined' == typeof value) {
                 return await this._ctx.session.get(name)
