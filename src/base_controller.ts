@@ -93,10 +93,10 @@ export default class BaseController {
             }
             if (this.appid) {
                 name = this.appid + '/' + name
-            }
-            if (this._ctx.auth) {
-                name = (this._ctx.auth.appid || 'unknow') + '/' + name
-            }
+            } else
+                if (this._ctx.auth) {
+                    name = (this._ctx.auth.appid || 'unknow') + '/' + name
+                }
             if ('undefined' == typeof value) {
                 return await this._ctx.session.get(name)
             } else {
