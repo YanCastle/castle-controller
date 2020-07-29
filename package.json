@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@ctsy/model": "*",
-    "@ctsy/relation": "*"
+    "@ctsy/relation": "*",
+    "mime": "^2.4.6"
   }
 }
