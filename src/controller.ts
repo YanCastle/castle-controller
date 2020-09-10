@@ -3,8 +3,68 @@ import BaseController from './base_controller';
 import { uniq, intersection, forOwn } from 'lodash';
 import { array_columns } from 'castle-function';
 import { DbOp, M } from '@ctsy/model';
-export default class Controller extends BaseController {
+import { GroupType, controller_group_fields } from './utils';
 
+export default class Controller extends BaseController {
+    /**
+     * 分组统计
+     * @param d 
+     */
+    async group(d: { Group: string, Sum: string, Count: string, Max: string, Min: string, Avg: string, W: { [index: string]: any } }[]) {
+        let db = Object.keys(await this._ctx.config.getDbTableFields(this._WTable ? this._WTable : this._ModelName))
+        return await Promise.all(
+            d.map(async (v) => {
+                let sql = await this.M().fields(this._pk).group(v.Group).where(v.W).sql(true).select()
+                let fields: string[] = [];
+                if (v.Sum) {
+                    fields.push(...controller_group_fields(v.Sum, GroupType.Sum, db))
+                    // v.Sum.split(',').map((o) => {
+                    //     let s = `SUM(\`${o}\`) AS \`${o}\``;
+                    //     if (fields.includes(s))
+                    //         fields.push(s)
+                    // })
+                }
+                if (v.Count) {
+                    fields.push(...controller_group_fields(v.Count, GroupType.Count, db))
+                    // v.Count.split(',').map((o) => {
+                    //     let s = `COUNT(\`${o}\`) AS \`${o}\``;
+                    //     if (fields.includes(s))
+                    //         fields.push(s)
+                    // })
+                }
+                if (v.Max) {
+                    fields.push(...controller_group_fields(v.Max, GroupType.Max, db))
+                    // v.Max.split(',').map((o) => {
+                    //     let s = `MAX(\`${o}\`) AS \`${o}\``;
+                    //     if (fields.includes(s))
+                    //         fields.push(s)
+                    // })
+                }
+                if (v.Min) {
+                    fields.push(...controller_group_fields(v.Min, GroupType.Min, db))
+                    // v.Min.split(',').map((o) => {
+                    //     let s = `MIN(\`${o}\`) AS \`${o}\``;
+                    //     if (fields.includes(s))
+                    //         fields.push(s)
+                    // })
+                }
+                if (v.Avg) {
+                    fields.push(...controller_group_fields(v.Avg, GroupType.Avg, db))
+                    // v.Avg.split(',').map((o) => {
+                    //     let s = `AVG(\`${o}\`) AS \`${o}\``;
+                    //     if (fields.includes(s))
+                    //         fields.push(s)
+                    // })
+                }
+                return this.M().query(`SELECT \`${this._pk}\`,${fields.join(',')} FROM ${this._prefix}${this._WTable ? this._WTable : this._ModelName} WHERE ${sql} GROUP BY :Group`,
+                    {
+                        replacements: {
+                            Group: v.Group
+                        }
+                    })
+            })
+        )
+    }
     /**
      * 查询请求
      * @param post 
@@ -73,7 +133,7 @@ export default class Controller extends BaseController {
             }
         } else {
             if (this._KeywordTable) {
-                KeywordIDs = (await this.R(this._KeywordTable).where({ or: Where }).fields(PK).select()).map((v: any) => { return v[PK] })
+                KeywordIDs = (await this.R(this._KeywordTable).where({ or: Where }).fields([PK]).select()).map((v: any) => { return v[PK] })
             }
         }
         WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)

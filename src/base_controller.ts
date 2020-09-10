@@ -4,8 +4,9 @@ import { parse } from "path";
 import * as mime from 'mime';
 import Relation, { R } from '@ctsy/relation';
 import Model, { M } from '@ctsy/model';
+import { ControllerCtx } from "./utils";
 export default class BaseController {
-    public _ctx: any;
+    public _ctx: ControllerCtx;
     public _config: any
     public _ModelName: string = "";
     public __proto__: any;
@@ -16,13 +17,19 @@ export default class BaseController {
      * 应用编号，saas模式下可用
      */
     public appid: string = "";
+    /**
+     * 模糊查询字段定义，
+     */
     public get _KeywordFields(): Array<string> { return [] };
-
+    /**
+     * 模糊查询表，必须定义后模糊查询的Keyword才生效
+     */
     public get _KeywordTable(): string { return '' };
     /**
      * search请求时的允许参与搜索的字段配置
      */
     public get _WFields(): string[] { return [] };
+    public get _WTable(): string { return '' };
     /**
      * 保存数据时的字段过滤
      */
@@ -32,7 +39,6 @@ export default class BaseController {
     public get _searchFields(): string[] {
         return this._config.getDbTableFields(this._ModelName)
     }
-    public get _WTable(): string { return '' };
     protected get _pk(): string {
         return this._ctx.config.getDbTablePK(this._ModelName)
     }
@@ -70,6 +76,12 @@ export default class BaseController {
         this._ctx.config.sendFile = true;
         this._ctx.body = content
     }
+    /**
+     * cookie操作
+     * @param name 
+     * @param value 
+     * @param options 
+     */
     protected _cookie(name: string, value?: string, options?: Object) {
         if ('undefined' == typeof value) {
             try {
@@ -114,7 +126,7 @@ export default class BaseController {
         if (await fs.exists(file)) {
             // let info = path.parse(file)
             let stat: Stats | any = await fs.stat(file)
-            this._ctx.set('Content-Type', mime.getType(ext ? ext : parse(file).ext.substr(1)))
+            this._ctx.set('Content-Type', mime.getType(ext ? ext : parse(file).ext.substr(1)) || '')
             this._ctx.set('Content-Length', stat.size)
             this._ctx.set('Last-Modified', stat.mtimeMs)
             this._ctx.set('Cache-Control', 'public')
@@ -127,6 +139,10 @@ export default class BaseController {
         }
         throw new Error('NO_UPLOAD_FILES')
     }
+    /**
+     * 实例化一个数据库操作对象
+     * @param TableName 
+     */
     protected M(TableName?: string): Model {
         let modal = M(this._ctx, TableName ? TableName : this._ModelName, this._prefix);
         if (this.trans) { modal.setTrans(this.trans) }
