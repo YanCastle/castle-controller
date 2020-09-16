@@ -136,23 +136,32 @@ export default class Controller extends BaseController {
                 KeywordIDs = (await this.R(this._KeywordTable).where({ or: Where }).fields([PK]).select()).map((v: any) => { return v[PK] })
             }
         }
-        WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)
-        if (Keyword) {
-            //当且仅当Keyword不为空的时候才做查询结果合并
-            PKIDs = intersection(WPKIDs, KeywordIDs)
+        if (KeywordIDs.length > 0) {
+            WPKIDs = await CurrentModel.where(W).order(Sort).getFields(PK, true)
+            if (Keyword) {
+                //当且仅当Keyword不为空的时候才做查询结果合并
+                PKIDs = intersection(WPKIDs, KeywordIDs)
+            } else {
+                PKIDs = WPKIDs;
+            }
+            let T = PKIDs.length;
+            if (PKIDs.length > (P - 1) * N) {
+                PKIDs = PKIDs.slice((P - 1) * N, P * N)
+            } else {
+                PKIDs = [];
+            }
+            return {
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
+                T,
+                P, N, R: {}
+            }
         } else {
-            PKIDs = WPKIDs;
-        }
-        let T = PKIDs.length;
-        if (PKIDs.length > (P - 1) * N) {
-            PKIDs = PKIDs.slice((P - 1) * N, P * N)
-        } else {
-            PKIDs = [];
-        }
-        return {
-            L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
-            T,
-            P, N, R: {}
+            let rs: any = await (this.R(ModelName)).where(W).page(P, N).order(Sort).fields(Object.keys(this._searchFields)).selectAndCount()
+            return {
+                L: rs.rows,
+                T: rs.count,
+                P, N, R: {}
+            }
         }
     }
     /**

@@ -9,10 +9,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@ctsy/config@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.10.tgz#5f07058fe291cd2c4837729875cb9c4e29566cb3"
-  integrity sha512-1fyuwgtJwpfRqqRXPLgeTJqa0Z+H9NBKJw6sYhGupuU/j8CTjUGj3cTczAep8CamrvSn3Ihb4ZJnvIL6m5PTqw==
+"@ctsy/config@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.11.tgz#34bcea0ef0e53db1439cb9da879b8181591eaa9b"
+  integrity sha512-FvDCIHa8aBut7huJK7dSoDp1NEyn56SVmiygFNknBNvgCKgGH+G7hEMC+Oh3UNJCntlJdG7AhtT0iRZ/8pr3ZA==
   dependencies:
     "@ctsy/common" "*"
     "@ctsy/crypto" "*"
@@ -35,10 +35,10 @@
   resolved "https://registry.yarnpkg.com/@ctsy/hook/-/hook-0.0.7.tgz#2f897b5c3a64294d437aaea7f81631250a7b0e39"
   integrity sha512-1q1Qthgtcy6hoaol63SEibJQ4wp19DmZ50hw44/YYVw0Y6HV20BCPnMJLR/eZZ32MvBpaV3IrIYODVRR6wy5kw==
 
-"@ctsy/model@*", "@ctsy/model@^2.0.23":
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.23.tgz#20055c9e3f7467803c07ced632bcc3771d1c427b"
-  integrity sha512-VJy8nc5VEdPjee4IbfsyIxd75FemfbVVeu4n1HE5Ak9mcY3Dx8//6B+332FzA2U3YnQkJ2azQ4kcICjynTAZ4w==
+"@ctsy/model@*", "@ctsy/model@^2.0.24":
+  version "2.0.24"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.24.tgz#e03bc666d051bb86d7e8dbe058c39c0547e33558"
+  integrity sha512-1vBpjv/BF9aYogUKDwoRaWmTM1y2SOBZnT6N+Mxh3bR4sGvrQqSULdhKTFLN6DzcCxvzzFy5lrBAstGkRMHBAQ==
   dependencies:
     "@ctsy/hook" "*"
     lodash "~4"
@@ -169,9 +169,9 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "14.6.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.6.4.tgz#a145cc0bb14ef9c4777361b7bbafa5cf8e3acb5a"
-  integrity sha512-Wk7nG1JSaMfMpoMJDKUsWYugliB2Vy55pdjLpmLixeyMi7HizW2I/9QoxsPCkXl3dO+ZOVqPumKaDUv5zJu2uQ==
+  version "14.10.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.2.tgz#9b47a2c8e4dabd4db73b57e750b24af689600514"
+  integrity sha512-IzMhbDYCpv26pC2wboJ4MMOa9GKtjplXfcAqrMeNJpUUwpM/2ATt2w1JPUXwS6spu856TvKZL2AOmeU2rAxskw==
 
 "@types/qs@*":
   version "6.9.4"
@@ -632,9 +632,9 @@ moment-timezone@^0.5.31:
     moment ">= 2.9.0"
 
 "moment@>= 2.9.0", moment@^2.26.0:
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
-  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.28.0.tgz#cdfe73ce01327cee6537b0fafac2e0f21a237d75"
+  integrity sha512-Z5KOjYmnHyd/ukynmFd/WwyXHd7L4J9vTI/nn5Ap9AVUgaAE15VvQ9MOGmJJygEUklupqIrFnor/tjTwRU+tQw==
 
 ms@2.0.0:
   version "2.0.0"
