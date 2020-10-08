@@ -7,6 +7,66 @@ import { GroupType, controller_group_fields } from './utils';
 
 export default class Controller extends BaseController {
     /**
+     * 父级主键
+     */
+    PPK: string = "";
+    /**
+     * 主键
+     */
+    PK: string = "";
+
+    /**
+     * 用户组提供树形的向上和向下查询
+     * @param d 
+     */
+    async tree(d: { [index: string]: number[] }) {
+        let PK = this.PK || await this._ctx.config.getDbTablePK(this._ModelName)
+        let Fields = await this._ctx.config.getDbTableFields(this._ModelName);
+        let PPK = this.PPK || 'P' + PK;
+        let deep: number | any = d.Deep || 3;
+        if (deep > 10) {
+            throw new Error('循环深度超过最大值:10')
+        }
+        if (!PK || PPK.length < 2 || !Fields[PPK]) {
+            throw new Error('错误的父子字段定义')
+        }
+        let rs = [];
+        if (d[PPK + 's']) {
+            //向下
+            let WIDs = d[PPK + 's'], IDs: number[] = d[PPK + 's'];
+            for (let i = 0; i < deep; i++) {
+                if (WIDs.length == 0) {
+                    break;
+                }
+                let row: any = await this.M().query(`SELECT * FROM ${this._prefix}__DB_TABLE__ WHERE ${i == 0 ? `${PK} IN (${WIDs.join(',')}) OR ` : ''}${PPK} IN (${WIDs.join(',')});`)
+                if (row.length > 0) {
+                    rs.push(...row);
+                    let pIDs = row.map((v: any) => v.ID).filter((v: number) => !IDs.includes(v))
+                    if (pIDs.length > 0) {
+                        WIDs = pIDs;
+                        IDs.push(...pIDs)
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+        } else if (d.IDs) {
+            //向上
+            let WIDs = d[PK + 's'], IDs: number[] = [];
+            for (let i = 0; i < deep; i++) {
+                let rw = await this.M().where({ [PK]: { in: WIDs } }).select();
+                let PIDs = array_columns(rw, PPK).filter((v) => Number(v) > 0);
+                if (PIDs.length == 0) {
+                    break;
+                }
+                rs.push(...rw);
+            }
+        }
+        return rs;
+    }
+    /**
      * 分组统计
      * @param d 
      */

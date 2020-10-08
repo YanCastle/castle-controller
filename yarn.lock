@@ -35,22 +35,22 @@
   resolved "https://registry.yarnpkg.com/@ctsy/hook/-/hook-0.0.7.tgz#2f897b5c3a64294d437aaea7f81631250a7b0e39"
   integrity sha512-1q1Qthgtcy6hoaol63SEibJQ4wp19DmZ50hw44/YYVw0Y6HV20BCPnMJLR/eZZ32MvBpaV3IrIYODVRR6wy5kw==
 
-"@ctsy/model@*", "@ctsy/model@^2.0.24":
-  version "2.0.24"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.24.tgz#e03bc666d051bb86d7e8dbe058c39c0547e33558"
-  integrity sha512-1vBpjv/BF9aYogUKDwoRaWmTM1y2SOBZnT6N+Mxh3bR4sGvrQqSULdhKTFLN6DzcCxvzzFy5lrBAstGkRMHBAQ==
+"@ctsy/model@^2.0.25":
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.25.tgz#f861e0b4359a23e33da2ec7ad0e347ba905017d7"
+  integrity sha512-HepINVhdpep1dQ6Z1wP95auRSpsGiOzOgAHKFjRLxZTWs9O6kexZnsLoeIiPmxzxDJ7QlIuvTHoyqC3P74YLnQ==
   dependencies:
     "@ctsy/hook" "*"
     lodash "~4"
     mysql2 "~2"
     sequelize "6"
 
-"@ctsy/relation@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.5.tgz#19a777dbfcabda19cc42f82a9c874272f6a1c0ef"
-  integrity sha512-81l0NvMCcZ33URlafjpCthvwdAVY9G2uWGuAZJfVZSmn9eptPBQxlsgzm18ZuTBXi7RF5hEbDDFGkBZVJ/utYQ==
+"@ctsy/relation@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.9.tgz#b206c4fab1009884fb296fc0ee357e1c8332d644"
+  integrity sha512-3MnQeFdwuVtTN9bFc7TtV12ljkVh5bLO3mMSXfyfsk1bkk8EVFIjuFJ+Is3DVZzq/1oTV7POFj6B/3Ah2T6NtA==
   dependencies:
-    "@ctsy/model" "*"
+    "@ctsy/model" "^2.0.25"
     castle-function "*"
     lodash "*"
 
