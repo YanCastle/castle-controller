@@ -45,10 +45,10 @@
     mysql2 "~2"
     sequelize "6"
 
-"@ctsy/relation@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.9.tgz#b206c4fab1009884fb296fc0ee357e1c8332d644"
-  integrity sha512-3MnQeFdwuVtTN9bFc7TtV12ljkVh5bLO3mMSXfyfsk1bkk8EVFIjuFJ+Is3DVZzq/1oTV7POFj6B/3Ah2T6NtA==
+"@ctsy/relation@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.10.tgz#bddee6611f2badd914b60def876e0204a93b6457"
+  integrity sha512-ZFylPTulEflmNLQkdJCeLRXEHHbQ9+7WF//CaIfA6xKPXO5dm6jMCjyWlHjsKgdsyoKzv17mkB0qbprGninNCA==
   dependencies:
     "@ctsy/model" "^2.0.25"
     castle-function "*"

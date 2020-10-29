@@ -230,7 +230,7 @@ export default class Controller extends BaseController {
      * @param ctx 
      */
     async get(post: any, ctx: any) {
-        return await this._model.where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 }).find()
+        return await this.R(this._ModelName).where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 }).find()
     }
     /**
      * 添加
@@ -238,7 +238,7 @@ export default class Controller extends BaseController {
      * @param ctx 
      */
     async add(post: any, ctx: any) {
-        return await this._model.add(post)
+        return await this.R(this._ModelName).add(post)
     }
     /**
      * 删除
@@ -246,7 +246,7 @@ export default class Controller extends BaseController {
      * @param ctx 
      */
     async del(post: any, ctx: any) {
-        return await this._model.where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 }).del();
+        return await this.R(this._ModelName).where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 }).del();
     }
     /**
      * 更新
@@ -254,7 +254,7 @@ export default class Controller extends BaseController {
      * @param ctx 
      */
     async save(post: any, ctx: any) {
-        return await this._model
+        return await this.R(this._ModelName)
             .where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 })
             .save(this.I('Params', {
                 type: (data: any) => {
@@ -278,7 +278,7 @@ export default class Controller extends BaseController {
     async saveW(post: any, ctx: any) {
         let W = this.I('W', { type: 'object' });
         if (W)
-            return await this._model.where(this.I('W', { type: 'object' })).save(this.I('Params', { type: 'object' }))
+            return await this.R(this._ModelName).where(this.I('W', { type: 'object' })).save(this.I('Params', { type: 'object' }))
         return false;
     }
     /**
@@ -289,7 +289,7 @@ export default class Controller extends BaseController {
     async delW(post: any, ctx: any) {
         let W = this.I('W', { type: 'object' });
         if (W)
-            return await this._model.where(W).del();
+            return await this.R(this._ModelName).where(W).del();
         else
             return false;
     }
@@ -300,7 +300,7 @@ export default class Controller extends BaseController {
      */
     async adds(post: any, ctx: any) {
         if (post instanceof Array)
-            return await this._model.addAll(post)
+            return await this.R(this._ModelName).addAll(post)
         return false;
     }
     /**
@@ -309,7 +309,7 @@ export default class Controller extends BaseController {
      * @param ctx 
      */
     async replaceW(post: any, ctx: any) {
-        await this._model.where(this.I('W', { type: 'object', d: { [this._pk]: 0 } })).del()
-        return await this._model.addAll(this.I('Data'))
+        await this.R(this._ModelName).where(this.I('W', { type: 'object', d: { [this._pk]: 0 } })).del()
+        return await this.R(this._ModelName).addAll(this.I('Data'))
     }
 }
