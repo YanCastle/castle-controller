@@ -286,7 +286,7 @@ export default class Controller extends BaseController {
      * @param post 
      * @param ctx 
      */
-    async delW(post: any, ctx: any) {
+    async delW(post: any, ctx: any): Promise<any> {
         let W = this.I('W', { type: 'object' });
         if (W)
             return await this.R(this._ModelName).where(W).del();
