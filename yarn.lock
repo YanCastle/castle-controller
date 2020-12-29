@@ -9,7 +9,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@ctsy/config@^2.0.11":
+"@ctsy/config@*":
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.11.tgz#34bcea0ef0e53db1439cb9da879b8181591eaa9b"
   integrity sha512-FvDCIHa8aBut7huJK7dSoDp1NEyn56SVmiygFNknBNvgCKgGH+G7hEMC+Oh3UNJCntlJdG7AhtT0iRZ/8pr3ZA==
@@ -45,10 +45,20 @@
     mysql2 "~2"
     sequelize "6"
 
-"@ctsy/relation@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.10.tgz#bddee6611f2badd914b60def876e0204a93b6457"
-  integrity sha512-ZFylPTulEflmNLQkdJCeLRXEHHbQ9+7WF//CaIfA6xKPXO5dm6jMCjyWlHjsKgdsyoKzv17mkB0qbprGninNCA==
+"@ctsy/model@^2.0.29":
+  version "2.0.29"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.29.tgz#2213221c1aca088c76c41466a3b20218aac2ed29"
+  integrity sha512-X9khAqmuifbdGUvX3oFTyP2poFShfXGAqSIh+SwZEvccUVd4kvKuzU9ADu7pTU/X6Y06vNOuJJw/aJnpsGANSQ==
+  dependencies:
+    "@ctsy/hook" "*"
+    lodash "~4"
+    mysql2 "~2"
+    sequelize "6"
+
+"@ctsy/relation@*":
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.12.tgz#0ca9890242d4babd2dc6435119ce30f9f3cf6950"
+  integrity sha512-R5oTHzrEs2bNEtRNFPAEntTEviZlHGZBtoU+OwC+62ypJP7sPd0tHpFUWfjv0jTbLdAwTZcCVPaG/mwul0IzyQ==
   dependencies:
     "@ctsy/model" "^2.0.25"
     castle-function "*"
@@ -137,7 +147,7 @@
   dependencies:
     "@types/koa" "*"
 
-"@types/koa@*", "@types/koa@^2.11.4":
+"@types/koa@*":
   version "2.11.4"
   resolved "https://registry.yarnpkg.com/@types/koa/-/koa-2.11.4.tgz#8af02a069a9f8e08fa47b8da28d982e652f69cfb"
   integrity sha512-Etqs0kdqbuAsNr5k6mlZQelpZKVwMu9WPRHVVTLnceZlhr0pYmblRNJbCgoCMzKWWePldydU0AYEOX4Q9fnGUQ==
@@ -191,10 +201,10 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/validator@^13.1.0":
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.1.0.tgz#3d776127dbce7dd31fc06f86d3428b072e631eba"
-  integrity sha512-gHUHI6pJaANIO2r6WcbT7+WMgbL9GZooR4tWpuBOETpDIqFNxwaJluE+6rj6VGYe8k6OkfhbHz2Fkm8kl06Igw==
+"@types/validator@*":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.1.2.tgz#03b989935c71a4c0b2582dbb20a1697dcc9eb319"
+  integrity sha512-ZLZRZ+l2Ny+XIO3dR9i5ET9AzSele8uFye/fxk1JiIOY3NLAyFGIaIpv8LRbV1L4ISazU/SeOJSdPlKxoHM9Mw==
 
 accepts@^1.3.5:
   version "1.3.7"
@@ -372,7 +382,7 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-ejs@^3.1.3:
+ejs@*:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.1.5.tgz#aed723844dc20acb4b170cd9ab1017e476a0d93b"
   integrity sha512-dldq3ZfFtgVTJMLjOe+/3sROTzALlL9E34V4/sDtUd/KlBSS0s6U1/+WPE1B4sj9CXHJpL1M6rhNJnc9Wbal9w==
@@ -541,7 +551,7 @@ koa-send@^5.0.1:
     http-errors "^1.7.3"
     resolve-path "^1.4.0"
 
-koa@^2.13.0:
+koa@^2:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/koa/-/koa-2.13.0.tgz#25217e05efd3358a7e5ddec00f0a380c9b71b501"
   integrity sha512-i/XJVOfPw7npbMv67+bOeXr3gPqOAw6uh5wFyNs3QvJ47tUx3M3V9rIE0//WytY42MKz4l/MXKyGkQ2LQTfLUQ==
@@ -612,10 +622,10 @@ mime-types@^2.1.18, mime-types@~2.1.24:
   dependencies:
     mime-db "1.44.0"
 
-mime@^2.4.6:
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.6.tgz#e5b407c90db442f2beb5b162373d07b69affa4d1"
-  integrity sha512-RZKhC3EmpBchfTGBVb8fb+RL2cWyw/32lshnsETttkBAyAUXSGHxbEJWWRXc751DrIxG1q04b8QwMbAwkRPpUA==
+mime@^2:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.7.tgz#962aed9be0ed19c91fd7dc2ece5d7f4e89a90d74"
+  integrity sha512-dhNd1uA2u397uQk3Nv5LM4lm93WYDUXFn3Fu291FJerns4jyTudqhIWe4W04YLy7Uk1tm1Ore04NpjRvQp/NPA==
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -661,7 +671,7 @@ mysql2@*, mysql2@~2:
     seq-queue "^0.0.5"
     sqlstring "^2.3.1"
 
-mz@*, mz@^2.7.0:
+mz@*, mz@^2:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
   integrity sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==

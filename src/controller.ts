@@ -143,18 +143,12 @@ export default class Controller extends BaseController {
             TableFields: { [index: string]: any } = await this._ctx.config.getDbTableFields(ModelName),
             PK = this._ctx.config.getDbTablePK(ModelName),
             Where: any = {};
+        let CurrentModel = M(this._ctx, ModelName, this._prefix);
         if (Sort) {
-            if ('string' == typeof Sort) {
-                for (let x of Sort.split(',')) {
-                    let key = x.split(' ');
-                    if (!TableFields[key[0]]) {
-                        throw new Error(`Sort Field:${key[0]} Is Not Avaliable`);
-                    }
-                    if (key[1] && !['asc', 'desc'].includes(key[1].toLowerCase())) {
-                        throw new Error(`Sort Field:${key[0]} Sort Type ${key[1]} Is Not Avaliable`)
-                    }
-                }
-            }
+            Sort = CurrentModel._parse_order(Sort).map((o) => {
+                o[0] = `\`${o[0]}\``
+                return o.join(' ')
+            }).join(',')
         }
         if (Keyword.length > 0) {
             // let Where: any = {};
@@ -169,7 +163,6 @@ export default class Controller extends BaseController {
                 // }
             }
         }
-        let CurrentModel = M(this._ctx, ModelName, this._prefix);
         if (Keyword.length == 0 || this._ModelName.toLowerCase() == this._KeywordTable.toLowerCase()) {
             let whereStr: any = await CurrentModel.sql(true).where(Object.assign(W, Where)).fields(PK).select();
             let sql: string[] = [`SELECT ${PK} FROM ${CurrentModel.true_table_name}`];
