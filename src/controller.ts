@@ -145,7 +145,7 @@ export default class Controller extends BaseController {
             Where: any = {};
         let CurrentModel = M(this._ctx, ModelName, this._prefix);
         if (Sort) {
-            Sort = CurrentModel._parse_order(Sort).map((o) => {
+            Sort = CurrentModel._parse_order(Sort).map((o: any) => {
                 o[0] = `\`${o[0]}\``
                 return o.join(' ')
             }).join(',')
@@ -238,7 +238,7 @@ export default class Controller extends BaseController {
      * @param post 
      * @param ctx 
      */
-    async del(post: any, ctx: any) {
+    async del(post: any, ctx: any): Promise<number | any> {
         return await this.R(this._ModelName).where({ [this._ctx.config.getDbTablePK(this._ModelName)]: post[this._ctx.config.getDbTablePK(this._ModelName)] || 0 }).del();
     }
     /**
@@ -291,7 +291,7 @@ export default class Controller extends BaseController {
      * @param post 
      * @param ctx 
      */
-    async adds(post: any, ctx: any) {
+    async adds(post: any, ctx: any): Promise<any> {
         if (post instanceof Array)
             return await this.R(this._ModelName).addAll(post)
         return false;
@@ -301,7 +301,7 @@ export default class Controller extends BaseController {
      * @param post 
      * @param ctx 
      */
-    async replaceW(post: any, ctx: any) {
+    async replaceW(post: any, ctx: any): Promise<any> {
         await this.R(this._ModelName).where(this.I('W', { type: 'object', d: { [this._pk]: 0 } })).del()
         return await this.R(this._ModelName).addAll(this.I('Data'))
     }
