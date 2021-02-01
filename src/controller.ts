@@ -142,7 +142,13 @@ export default class Controller extends BaseController {
             KeywordIDs: any[] = [],
             TableFields: { [index: string]: any } = await this._ctx.config.getDbTableFields(ModelName),
             PK = this._ctx.config.getDbTablePK(ModelName),
-            Where: any = {};
+            Where: any = {}, limitFields = post._fields || [];
+        if ('string' == typeof limitFields) {
+            limitFields = limitFields.split(',')
+        }
+        if (limitFields.length == 0) {
+            limitFields = Object.keys(TableFields)
+        }
         let CurrentModel = M(this._ctx, ModelName, this._prefix);
         if (Sort) {
             Sort = CurrentModel._parse_order(Sort).map((o: any) => {
@@ -180,7 +186,7 @@ export default class Controller extends BaseController {
                 CurrentModel.query(countSQL)
             ]);
             return {
-                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(<any>array_columns(PKIDs, PK)) : [],
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).objects(<any>array_columns(PKIDs, PK)) : [],
                 T: Count[0].A,
                 P, N, R: {}
             }
@@ -204,12 +210,12 @@ export default class Controller extends BaseController {
                 PKIDs = [];
             }
             return {
-                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(Object.keys(this._searchFields)).objects(PKIDs) : [],
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).objects(PKIDs) : [],
                 T,
                 P, N, R: {}
             }
         } else {
-            let rs: any = await (this.R(ModelName)).where(W).page(P, N).order(Sort).fields(Object.keys(this._searchFields)).selectAndCount()
+            let rs: any = await (this.R(ModelName)).where(W).page(P, N).order(Sort).fields(limitFields).selectAndCount()
             return {
                 L: rs.rows,
                 T: rs.count,
