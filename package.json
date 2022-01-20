@@ -39,6 +39,8 @@
     "@ctsy/config": "^2",
     "@ctsy/model": "^2",
     "@ctsy/relation": "^2",
+    "@ctsy/session": "*",
+    "lodash": "*",
     "koa": "^2",
     "mime": "^2",
     "mz": "^2"

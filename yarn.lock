@@ -9,10 +9,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@ctsy/config@*":
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.11.tgz#34bcea0ef0e53db1439cb9da879b8181591eaa9b"
-  integrity sha512-FvDCIHa8aBut7huJK7dSoDp1NEyn56SVmiygFNknBNvgCKgGH+G7hEMC+Oh3UNJCntlJdG7AhtT0iRZ/8pr3ZA==
+"@ctsy/config@^2":
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.12.tgz#aab9363af800b801056ca6639b06710dcdb2de5d"
+  integrity sha512-QUQAP/qZtJDZ44Hxr7b1rhMT0P23Xv0I1c5k+eb9CxEHOZftnLzoxHArUc0FdA9qQLxBsstGkMHVRTcqTzlHAg==
   dependencies:
     "@ctsy/common" "*"
     "@ctsy/crypto" "*"
@@ -35,34 +35,33 @@
   resolved "https://registry.yarnpkg.com/@ctsy/hook/-/hook-0.0.7.tgz#2f897b5c3a64294d437aaea7f81631250a7b0e39"
   integrity sha512-1q1Qthgtcy6hoaol63SEibJQ4wp19DmZ50hw44/YYVw0Y6HV20BCPnMJLR/eZZ32MvBpaV3IrIYODVRR6wy5kw==
 
-"@ctsy/model@*":
-  version "2.0.32"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.32.tgz#3f2980c01e6d5043b3d49549898b4b3e50afb4ed"
-  integrity sha512-+V2u7XP8QlCZxirx76lyfvqkutFSsglqvrsB3wjMwiRe6pBuI7jFMFqxar2cRleN6YHjfv9U40rZNs5GNzsH2g==
+"@ctsy/model@^2":
+  version "2.0.47"
+  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.47.tgz#a4b79645a6f6b4c6bc78668ea8138619a8810475"
+  integrity sha512-z8lLZSZBZl9IrPfnSHpvoj/8c0aopPoesvYj1+EJ60+19uA6Gxx45Lu/r3qK6lOPHnRvHLncHYoxihCw0FzhRQ==
   dependencies:
     "@ctsy/hook" "*"
-    lodash "~4"
-    mysql2 "~2"
+    lodash "*"
+    mysql2 "*"
     sequelize "6"
 
-"@ctsy/model@^2.0.25":
-  version "2.0.25"
-  resolved "https://registry.yarnpkg.com/@ctsy/model/-/model-2.0.25.tgz#f861e0b4359a23e33da2ec7ad0e347ba905017d7"
-  integrity sha512-HepINVhdpep1dQ6Z1wP95auRSpsGiOzOgAHKFjRLxZTWs9O6kexZnsLoeIiPmxzxDJ7QlIuvTHoyqC3P74YLnQ==
+"@ctsy/relation@^2":
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.16.tgz#8912ed42e596d1d4da401033903b993641f23299"
+  integrity sha512-rRsiDAx/MQVeSJWIpJV7BuIkmIBOtlYzyA+ywFywcxpdTj6FJtLrus4rheTh3GUEn3Zt072BbtaDqn9V8GFSgg==
   dependencies:
-    "@ctsy/hook" "*"
-    lodash "~4"
-    mysql2 "~2"
-    sequelize "6"
-
-"@ctsy/relation@*":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.12.tgz#0ca9890242d4babd2dc6435119ce30f9f3cf6950"
-  integrity sha512-R5oTHzrEs2bNEtRNFPAEntTEviZlHGZBtoU+OwC+62ypJP7sPd0tHpFUWfjv0jTbLdAwTZcCVPaG/mwul0IzyQ==
-  dependencies:
-    "@ctsy/model" "^2.0.25"
+    "@ctsy/model" "^2"
     castle-function "*"
     lodash "*"
+
+"@ctsy/session@^1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@ctsy/session/-/session-1.0.17.tgz#1cbcc824e664851cccd75cb03d2d73215e4a527d"
+  integrity sha512-4qaigD1ozracgbT2kpoJeJrQ6XVWx8QaGOnbEQn0lge/VcO6MC583IeOvOQxvf1D7uUFrPVVwrIrbjD6FHUsag==
+  dependencies:
+    "@ctsy/hook" "*"
+    lodash "*"
+    mz "*"
 
 "@types/accepts@*":
   version "1.3.5"
@@ -580,7 +579,7 @@ koa@^2:
     type-is "^1.6.16"
     vary "^1.1.2"
 
-lodash@*, lodash@^4.17.15, lodash@~4:
+lodash@*, lodash@^4.17.15:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -656,7 +655,7 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-mysql2@*, mysql2@~2:
+mysql2@*:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-2.1.0.tgz#55ecfd4353114c148cc4c253192dbbfd000e6642"
   integrity sha512-9kGVyi930rG2KaHrz3sHwtc6K+GY9d8wWk1XRSYxQiunvGcn4DwuZxOwmK11ftuhhwrYDwGx9Ta4VBwznJn36A==

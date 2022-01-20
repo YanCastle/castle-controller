@@ -18,6 +18,8 @@ export default class Controller extends BaseController {
     /**
      * 用户组提供树形的向上和向下查询
      * @param d 
+     * @description
+     * 在存在PPK和PK的情况下进行遍历树形数据生成算法
      */
     async tree(d: { [index: string]: number[] }) {
         let PK = this.PK || await this._ctx.config.getDbTablePK(this._ModelName)

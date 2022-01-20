@@ -2,11 +2,15 @@
 import { Context, Request } from 'koa'
 import Config from '@ctsy/config/dist/config'
 import { IncomingMessage } from 'http';
-
+import { Session } from '@ctsy/session';
+/**
+ * 控制器对象
+ */
 export interface ControllerCtx extends Context {
-    config: Config
+    config: Config & {}
     req: IncomingMessage & { files: any }
     request: Request & { body: any }
+    session: Session
     [index: string]: any
 }
 
