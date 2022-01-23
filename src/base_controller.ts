@@ -281,7 +281,6 @@ export default class BaseController {
      * let UID = this.I("W.UID",{type:'number',d:0})
      * //抛出错误，找不到符合类型的数据
      * let UID = this.I("W.UID",{type:'string',d:0}) 
-     * @returns 
      */
     protected I(name: string, options?: { type?: string | Function | Symbol, d?: any }) {
         let data = get(this._ctx.request.body, name, options ? options.d : '')
