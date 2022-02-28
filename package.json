@@ -1,6 +1,6 @@
 {
   "name": "@ctsy/controller",
-  "version": "2.0.24",
+  "version": "2.0.25",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,8 +40,8 @@
     "@ctsy/model": "^2",
     "@ctsy/relation": "^2",
     "@ctsy/session": "*",
-    "lodash": "*",
     "koa": "^2",
+    "lodash": "*",
     "mime": "^2",
     "mz": "^2"
   }
