@@ -173,20 +173,17 @@ export default class Controller extends BaseController {
         }
         if (Keyword.length == 0 || this._ModelName.toLowerCase() == this._KeywordTable.toLowerCase()) {
             let whereStr: any = await CurrentModel.sql(true).where(Object.assign(W, Where)).fields(PK).select();
-            let sql: string[] = [`SELECT ${PK} FROM ${CurrentModel.true_table_name}`];
+            let sql: string[] = [`SELECT SQL_CALC_FOUND_ROWS ${PK} FROM ${CurrentModel.true_table_name}`];
             if (whereStr.length > 0) {
                 sql.push(`WHERE ${whereStr}`)
             }
-            let countSQL = sql.join(' ').replace(` ${PK} `, ` COUNT(${PK}) AS A `);
             if (Sort) {
                 sql.push(`ORDER BY ${Sort}`)
             }
             sql.push(`LIMIT ${(P - 1) * N},${N}`);
             let rsql = sql.join(' ');
-            let [PKIDs, Count] = await Promise.all([
-                CurrentModel.query(rsql),
-                CurrentModel.query(countSQL)
-            ]);
+            let PKIDs = await CurrentModel.query(rsql)
+            let Count = await CurrentModel.query(`SELECT FOUND_ROWS() AS A`)
             return {
                 L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).objects(<any>array_columns(PKIDs, PK)) : [],
                 T: Count[0].A,
