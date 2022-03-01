@@ -21,7 +21,6 @@ export default class BaseController {
      * 可以手动指定的模型名称
      */
     public _ModelName: string = "";
-    public __proto__: any;
     /**
      * 数据库前缀配置
      */
@@ -77,6 +76,7 @@ export default class BaseController {
     constructor(ctx: any) {
         this._ctx = ctx;
         this._config = ctx.config;
+        //@ts-ignore
         this._ModelName = this.__proto__.constructor.name;
     }
 
