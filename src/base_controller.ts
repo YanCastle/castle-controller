@@ -142,7 +142,7 @@ export default class BaseController {
      * @description
      * 进行session的读写操作
      */
-    protected async _session(name: string, value?: any): Promise<string | { [index: string]: any } | void> {
+    protected async _session(name: string, value?: any): Promise<any> {
         try {
             if (name === null) {
                 return await this._ctx.session.destory()
