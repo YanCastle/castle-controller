@@ -184,6 +184,12 @@ export default class Controller extends BaseController {
             let rsql = sql.join(' ');
             let PKIDs = await CurrentModel.query(rsql)
             let Count = await CurrentModel.query(`SELECT FOUND_ROWS() AS A`)
+            let ow = {}
+            //TODO 权限隔离处理，需要配置是否是开放式GID，如果是则允许选定，否则只能是当前切换的企业
+            if (post.W.GID) {
+                //@ts-ignore
+                ow.GID = post.W.GID;
+            }
             return {
                 L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).objects(<any>array_columns(PKIDs, PK)) : [],
                 T: Count[0].A,
