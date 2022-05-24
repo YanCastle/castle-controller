@@ -9,6 +9,14 @@
   dependencies:
     lodash "^4.17.15"
 
+"@ctsy/common@^1":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@ctsy/common/-/common-1.0.12.tgz#9186f1c106ba3a42ce35bc500c4163a822bdeccc"
+  integrity sha512-huXwcvIDbbei7iKl78cGgJpnadm9aG/KLgMqvHW6eTb/o06q3gzDx/913ZxXjjM0yXCsTc3RABfvNUEzB5+HgQ==
+  dependencies:
+    dayjs "*"
+    lodash "*"
+
 "@ctsy/config@^2":
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/@ctsy/config/-/config-2.0.12.tgz#aab9363af800b801056ca6639b06710dcdb2de5d"
@@ -46,18 +54,18 @@
     sequelize "6"
 
 "@ctsy/relation@^2":
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.16.tgz#8912ed42e596d1d4da401033903b993641f23299"
-  integrity sha512-rRsiDAx/MQVeSJWIpJV7BuIkmIBOtlYzyA+ywFywcxpdTj6FJtLrus4rheTh3GUEn3Zt072BbtaDqn9V8GFSgg==
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@ctsy/relation/-/relation-2.0.17.tgz#ec2c03d3e37ef04fdb91072e7b0976dab5aec71f"
+  integrity sha512-gyirGZ4U2INuiEmsA+SL8q9JE0+2LuuCtF4/bvRXUK0N7+Q1qXHjS+hF2i+6oGeqMbSAvgiCf6x9SypHDnwQxQ==
   dependencies:
+    "@ctsy/common" "^1"
     "@ctsy/model" "^2"
-    castle-function "*"
     lodash "*"
 
-"@ctsy/session@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@ctsy/session/-/session-1.0.17.tgz#1cbcc824e664851cccd75cb03d2d73215e4a527d"
-  integrity sha512-4qaigD1ozracgbT2kpoJeJrQ6XVWx8QaGOnbEQn0lge/VcO6MC583IeOvOQxvf1D7uUFrPVVwrIrbjD6FHUsag==
+"@ctsy/session@*":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@ctsy/session/-/session-1.0.18.tgz#79125c789e4157c5ca34ddd0792d47c75198a2f5"
+  integrity sha512-AOetft6Mie9EDfYo3p/fB2+08mtyeV6V0wN1hhrfySsP+508uYceH9H27KjIFsv7DL4tlNjIGXRJCaI3Cz3+9g==
   dependencies:
     "@ctsy/hook" "*"
     lodash "*"
@@ -264,13 +272,6 @@ cardinal@^2.1.1:
     ansicolors "~0.3.2"
     redeyed "~2.1.0"
 
-castle-function@*:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/castle-function/-/castle-function-1.0.5.tgz#7323b572d87d78fa5713b152220aa97af32be9c6"
-  integrity sha512-zvBVulPsw547g3hsxbFe3ielNanBYQHKKB4EXtn69OtoVML7H8Bqf+fKcwZ0iLj69DtCv3aIqiLRGqCDofMjxg==
-  dependencies:
-    lodash "^4.17.15"
-
 castle-utils@*:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/castle-utils/-/castle-utils-1.0.2.tgz#86b26ea3bf809c6797c032c0724af7522ed59ccf"
@@ -326,6 +327,11 @@ cookies@~0.8.0:
   dependencies:
     depd "~2.0.0"
     keygrip "~1.1.0"
+
+dayjs@*:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.2.tgz#fa0f5223ef0d6724b3d8327134890cfe3d72fbe5"
+  integrity sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==
 
 debug@^4.1.1:
   version "4.1.1"

@@ -36,6 +36,7 @@
     "ejs": "*"
   },
   "dependencies": {
+    "@ctsy/common": "^1",
     "@ctsy/config": "^2",
     "@ctsy/model": "^2",
     "@ctsy/relation": "^2",

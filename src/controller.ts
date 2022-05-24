@@ -1,7 +1,7 @@
 
 import BaseController from './base_controller';
 import { uniq, intersection, forOwn } from 'lodash';
-import { array_columns } from 'castle-function';
+import { array_columns } from '@ctsy/common';
 import { DbOp, M } from '@ctsy/model';
 import { GroupType, controller_group_fields } from './utils';
 
