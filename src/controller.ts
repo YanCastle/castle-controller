@@ -191,7 +191,7 @@ export default class Controller extends BaseController {
                 ow.GID = post.W.GID;
             }
             return {
-                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).objects(<any>array_columns(PKIDs, PK)) : [],
+                L: PKIDs.length > 0 ? await (this.R(ModelName)).order(Sort).fields(limitFields).where(ow).objects(<any>array_columns(PKIDs, PK)) : [],
                 T: Count[0].A,
                 P, N, R: {}
             }
